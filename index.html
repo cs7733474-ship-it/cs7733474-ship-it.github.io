@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internship Verification — Chetan Sharma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1115;
+    --paper: #f5f1e8;
+    --cream: #ebe4d3;
+    --gold: #8a6d3b;
+    --navy: #1a3a5c;
+    --rule: #2a2520;
+    --muted: #6b5d4f;
+    --verified: #2d5016;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter Tight', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(at 20% 10%, rgba(138, 109, 59, 0.06) 0px, transparent 50%),
+      radial-gradient(at 80% 90%, rgba(26, 58, 92, 0.05) 0px, transparent 50%);
+  }
+
+  .grain::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  /* Top stamp / verified mark */
+  .verified-stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: rgba(45, 80, 22, 0.08);
+    border: 1px solid rgba(45, 80, 22, 0.25);
+    border-radius: 100px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--verified);
+    margin-bottom: 32px;
+    animation: fadeUp 0.7s ease-out;
+  }
+
+  .verified-stamp .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--verified);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.9); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Header */
+  .header {
+    margin-bottom: 56px;
+    animation: fadeUp 0.8s ease-out 0.1s both;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold);
+  }
+
+  .subtitle {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 620px;
+    line-height: 1.6;
+  }
+
+  /* Section dividers */
+  .section {
+    margin-top: 56px;
+    animation: fadeUp 0.8s ease-out both;
+  }
+
+  .section:nth-child(3) { animation-delay: 0.2s; }
+  .section:nth-child(4) { animation-delay: 0.3s; }
+  .section:nth-child(5) { animation-delay: 0.4s; }
+  .section:nth-child(6) { animation-delay: 0.5s; }
+
+  .section-title {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(42, 37, 32, 0.15);
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  .section-title h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  /* Info grid */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 40px;
+  }
+
+  .info-item {
+    border-left: 2px solid var(--gold);
+    padding-left: 16px;
+  }
+
+  .info-item.full {
+    grid-column: 1 / -1;
+  }
+
+  .info-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .info-value {
+    font-size: 17px;
+    color: var(--ink);
+    font-weight: 500;
+    font-family: 'Fraunces', serif;
+  }
+
+  .info-value a {
+    color: var(--navy);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(26, 58, 92, 0.3);
+    transition: border-color 0.2s;
+  }
+
+  .info-value a:hover {
+    border-bottom-color: var(--navy);
+  }
+
+  /* Certificate display */
+  .cert-frame {
+    background: white;
+    padding: 16px;
+    border: 1px solid rgba(42, 37, 32, 0.15);
+    box-shadow:
+      0 1px 2px rgba(0,0,0,0.04),
+      0 10px 40px rgba(42, 37, 32, 0.08);
+    margin: 0 auto;
+    max-width: 100%;
+    position: relative;
+  }
+
+  .cert-frame::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px; bottom: -1px;
+    border: 1px solid var(--gold);
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  .cert-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .cert-caption {
+    text-align: center;
+    margin-top: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Verification card */
+  .verify-card {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 36px;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .verify-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(138, 109, 59, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .verify-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .verify-card p {
+    color: rgba(245, 241, 232, 0.7);
+    margin-bottom: 24px;
+    font-size: 15px;
+    max-width: 540px;
+  }
+
+  .verify-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    background: var(--paper);
+    color: var(--ink);
+    text-decoration: none;
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.01em;
+    border-radius: 2px;
+    transition: transform 0.2s, background 0.2s;
+    border: 1px solid var(--paper);
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    background: white;
+  }
+
+  .btn.outline {
+    background: transparent;
+    color: var(--paper);
+    border-color: rgba(245, 241, 232, 0.3);
+  }
+
+  .btn.outline:hover {
+    background: rgba(245, 241, 232, 0.08);
+  }
+
+  .btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Contact list */
+  .contact-list {
+    display: grid;
+    gap: 14px;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(42, 37, 32, 0.1);
+    border-radius: 2px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .contact-row:hover {
+    border-color: var(--gold);
+    transform: translateX(4px);
+  }
+
+  .contact-icon {
+    width: 38px;
+    height: 38px;
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+  }
+
+  .contact-text { flex: 1; min-width: 0; }
+  .contact-text .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .contact-text .value {
+    font-size: 16px;
+    color: var(--ink);
+    word-break: break-word;
+  }
+  .contact-text .value a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(42, 37, 32, 0.15);
+    text-align: center;
+  }
+
+  .footer .seal {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .footer .timestamp {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* Decorative element */
+  .ornament {
+    text-align: center;
+    margin: 24px 0;
+    color: var(--gold);
+    font-size: 20px;
+    letter-spacing: 1em;
+    opacity: 0.5;
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 32px 20px 60px; }
+    .info-grid { grid-template-columns: 1fr; gap: 20px; }
+    .verify-card { padding: 28px 22px; }
+    h1 { font-size: 34px; }
+  }
+</style>
+</head>
+<body class="grain">
+
+<div class="container">
+
+  <div class="verified-stamp">
+    <span class="dot"></span>
+    <span>Authentic Document · Verified Source</span>
+  </div>
+
+  <header class="header">
+    <div class="eyebrow">Certificate of Internship · 2026</div>
+    <h1>This document certifies the internship completed by <em>Chetan Sharma</em>.</h1>
+    <p class="subtitle">Issued by a registered firm of Chartered Accountants under the Institute of Chartered Accountants of India (ICAI). All credentials below are independently verifiable through official ICAI records.</p>
+  </header>
+
+  <!-- Intern Details -->
+  <section class="section">
+    <div class="section-title">
+      <span class="section-num">01</span>
+      <h2>Intern Details</h2>
+    </div>
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="info-label">Name</div>
+        <div class="info-value">Chetan Sharma</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Father's Name</div>
+        <div class="info-value">Mohan Lal Sharma</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Course</div>
+        <div class="info-value">B.Com, Semester VI</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">University</div>
+        <div class="info-value">University of Rajasthan</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Roll Number</div>
+        <div class="info-value">211955</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Enrollment Number</div>
+        <div class="info-value">2023/213121</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Internship -->
+  <section class="section">
+    <div class="section-title">
+      <span class="section-num">02</span>
+      <h2>Internship Period</h2>
+    </div>
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="info-label">Duration</div>
+        <div class="info-value">13 April 2026 — 12 May 2026</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Total Hours</div>
+        <div class="info-value">120 Hours</div>
+      </div>
+      <div class="info-item full">
+        <div class="info-label">Framework</div>
+        <div class="info-value">Completed in partial fulfilment of the NEP 2020 Undergraduate Curriculum requirements</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Firm Details -->
+  <section class="section">
+    <div class="section-title">
+      <span class="section-num">03</span>
+      <h2>Issuing Firm</h2>
+    </div>
+    <div class="info-grid">
+      <div class="info-item full">
+        <div class="info-label">Firm Name</div>
+        <div class="info-value">M/s Harish Sehgal and Associates · Chartered Accountants</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Firm Registration No. (FRN)</div>
+        <div class="info-value">020440C</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Signing Partner</div>
+        <div class="info-value">Narendra Sharma</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">ICAI Membership No.</div>
+        <div class="info-value">424714</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Designation</div>
+        <div class="info-value">Partner</div>
+      </div>
+      <div class="info-item full">
+        <div class="info-label">Branch Office</div>
+        <div class="info-value">SF-43A, Jaipur Textile Market, Jagatpura Flyover, Model Town, Jagatpura, Jaipur — 302017, Rajasthan</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ICAI Verification Card -->
+  <section class="section">
+    <div class="verify-card">
+      <h3>Verify with ICAI</h3>
+      <p>Both the firm and the signing partner are registered with the Institute of Chartered Accountants of India. You can independently confirm the credentials below on the official ICAI portal.</p>
+      <div class="verify-buttons">
+        <a href="https://www.icai.org/post/firms-search" target="_blank" rel="noopener" class="btn">
+          Verify Firm — FRN 020440C
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+        <a href="https://www.icai.org/post/members-search" target="_blank" rel="noopener" class="btn outline">
+          Verify Member — M.No 424714
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificate -->
+  <section class="section">
+    <div class="section-title">
+      <span class="section-num">04</span>
+      <h2>Original Certificate</h2>
+    </div>
+    <div class="cert-frame">
+      <img src="certificate.png" alt="Certificate of Internship issued by Harish Sehgal and Associates to Chetan Sharma">
+    </div>
+    <p class="cert-caption">— Signed & Sealed Document —</p>
+  </section>
+
+  <!-- Direct Contact -->
+  <section class="section">
+    <div class="section-title">
+      <span class="section-num">05</span>
+      <h2>Direct Verification Contact</h2>
+    </div>
+    <div class="contact-list">
+      <div class="contact-row">
+        <div class="contact-icon">☎</div>
+        <div class="contact-text">
+          <div class="label">Phone</div>
+          <div class="value"><a href="tel:+919785597773">+91 97855 97773</a></div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">@</div>
+        <div class="contact-text">
+          <div class="label">Email</div>
+          <div class="value"><a href="mailto:narendrashrm315@gmail.com">narendrashrm315@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">⌖</div>
+        <div class="contact-text">
+          <div class="label">Office Address</div>
+          <div class="value">SF-43A, Jaipur Textile Market, Jagatpura Flyover, Model Town, Jagatpura, Jaipur — 302017, Rajasthan</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ornament">· · ·</div>
+
+  <footer class="footer">
+    <div class="seal">Issued on the thirteenth of May, two thousand and twenty-six.</div>
+    <div class="timestamp">Place of Issue · Jaipur, Rajasthan, India</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
